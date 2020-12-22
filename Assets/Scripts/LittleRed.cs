@@ -33,7 +33,7 @@ public class LittleRed : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Bounce(collision.contacts[0].normal);
+        Bounce(collision.GetContact(0).normal);
     }
 
     private void Bounce(Vector3 collisionNormal)
@@ -42,7 +42,7 @@ public class LittleRed : MonoBehaviour
         var speed = lastFrameVelocity.magnitude;
         var direction = Vector3.Reflect(lastFrameVelocity.normalized, collisionNormal);
         
-        rb.velocity = direction * Mathf.Max(speed, 1.0f);
+        rb.velocity = direction * Mathf.Max(speed, 0.5f);
     }
 
     IEnumerator Resp()
@@ -50,6 +50,7 @@ public class LittleRed : MonoBehaviour
         // Перемещение в исходное положение, остановка движения.
         yield return new WaitForSeconds(1.5f);
         transform.position = Respawn;
+        yield return new WaitForSeconds(0.01f);
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
