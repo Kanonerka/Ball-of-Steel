@@ -23,7 +23,7 @@ public class CameraCollision : MonoBehaviour
 
         if (Physics.Linecast (transform.parent.position, desiredCamPos, out hit))
         {
-            distance = Mathf.Clamp((hit.distance * 0.8f), minDistance, maxDistance);
+            distance = Mathf.Clamp(hit.distance * 0.7f, minDistance, maxDistance);
         }
         else
         {

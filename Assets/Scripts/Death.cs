@@ -51,6 +51,8 @@ public class Death : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Place = GameObject.FindGameObjectWithTag("Start").GetComponent<Transform>();
         rb.MovePosition(Place.position); // Перемещение игрока в начало уровня
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         Lives = DefaultLives; // Обновление  жизней
 
         Debug.Log($"Lives = {Lives}");
@@ -62,6 +64,8 @@ public class Death : MonoBehaviour
 
         Place = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Transform>();
         rb.MovePosition(Place.position);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     IEnumerator NextScene()
@@ -75,5 +79,7 @@ public class Death : MonoBehaviour
         // Перемещение точки возрождения и игрока в условное начало следующего уровня
         GameObject.FindGameObjectWithTag("Respawn").GetComponent<Transform>().position = new Vector3(0.0f, 1.5f, -3.0f);
         rb.MovePosition(new Vector3(0.0f, 1.5f, -3.0f));
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 }

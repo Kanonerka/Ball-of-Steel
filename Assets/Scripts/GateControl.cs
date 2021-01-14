@@ -13,7 +13,7 @@ public class GateControl : MonoBehaviour
     {
         if (Object.CompareTag("Item"))
         {
-            Destroy(Object.gameObject, 0.3f);
+            Destroy(Object.gameObject, 0.2f);
             Opening = true;
         }
     }
